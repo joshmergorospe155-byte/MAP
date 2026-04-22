@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianBand Tracking Dashboard</title>
+    
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        #map { height: 100vh; width: 100vw; }
+        
+        #ui-overlay {
+            position: absolute; top: 20px; left: 20px; z-index: 1000;
+            background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            max-width: 250px;
+        }
+        
+        h2 { margin: 0 0 10px 0; font-size: 18px; color: #333; }
+        
+        button {
+            background: #007bff; color: white; border: none;
+            padding: 12px 20px; border-radius: 8px; cursor: pointer;
+            width: 100%; font-weight: bold; transition: background 0.3s;
+        }
+        
+        button:hover { background: #0056b3; }
+        
+        #status-container { margin-top: 15px; font-size: 13px; border-top: 1px solid #eee; pt: 10px; }
+        .label { color: #888; font-weight: bold; text-transform: uppercase; font-size: 10px; }
+        #status { color: #d9534f; margin-bottom: 5px; } /* Red for disconnected */
+        #coords { color: #28a745; font-family: monospace; } /* Green for GPS data */
+    </style>
+</head>
+<body>
+
+    <div id="ui-overlay">
+        <h2>GuardianBand</h2>
+        <button id="connectBle">CONNECT DEVICE</button>
+        
+        <div id="status-container">
+            <div class="label">Device Status:</div>
+            <div id="status">Disconnected</div>
+            <div class="label">GPS Coordinates:</div>
+            <div id="coords">Waiting for data...</div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="leaflet/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
