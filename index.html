@@ -28,10 +28,10 @@
         
         button:hover { background: #0056b3; }
         
-        #status-container { margin-top: 15px; font-size: 13px; border-top: 1px solid #eee; pt: 10px; }
+        #status-container { margin-top: 15px; font-size: 13px; border-top: 1px solid #eee; padding-top: 10px; }
         .label { color: #888; font-weight: bold; text-transform: uppercase; font-size: 10px; }
-        #status { color: #d9534f; margin-bottom: 5px; } /* Red for disconnected */
-        #coords { color: #28a745; font-family: monospace; } /* Green for GPS data */
+        #status { color: #d9534f; margin-bottom: 5px; } 
+        #coords { color: #28a745; font-family: monospace; } 
     </style>
 </head>
 <body>
@@ -51,6 +51,17 @@
     <div id="map"></div>
 
     <script src="leaflet/leaflet.js"></script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.worker = navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('Service Worker Registered!'))
+            .catch(err => console.log('Service Worker Failed:', err));
+        });
+      }
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
